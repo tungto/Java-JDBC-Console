@@ -1,0 +1,11 @@
+1571453686831	Delete element
+1571453864493	Delete element
+1571455445027	Move compilation unit
+1571455542619	Rename package 'com.laptrinhjavaweb.service.impl'
+1571455556090	Move compilation unit
+1571456400732	Delete element
+1571462346080	Rename type 'UserRepository'
+1571462401046	Move compilation unit
+1571462532436	Rename type 'BuildingRepository'
+1571465720492	Rename type 'EntityManagerImpl'
+1571498872736	Rename type 'EntityManager'

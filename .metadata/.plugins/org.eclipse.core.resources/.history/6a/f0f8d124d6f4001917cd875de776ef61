@@ -1,0 +1,52 @@
+package com.laptrinhjavaweb.entity;
+
+import com.laptrinhjavaweb.annotation.Column;
+import com.laptrinhjavaweb.annotation.Table;
+
+@Table(name = "user")
+public class UserEntity {
+	@Column(name = "id")
+	private Long id;
+	@Column(name = "userName")
+	private String userName;
+	@Column(name = "fullName")
+	private String fullName;
+	
+	@Column(name = "password")
+	private String password;
+
+	public Long getId() {
+		return id;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	
+	
+}

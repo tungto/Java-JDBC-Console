@@ -1,0 +1,5 @@
+package com.laptrinhjavaweb.entity;
+@Table(name = "building")
+public class BuildingEntity {
+
+}

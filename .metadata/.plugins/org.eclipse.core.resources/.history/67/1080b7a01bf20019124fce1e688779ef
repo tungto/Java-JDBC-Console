@@ -1,0 +1,19 @@
+package com.laptrinhjavaweb.responsitory.impl;
+
+import java.util.Collection;
+
+public class EntityManagerImpl {
+	
+	ResourceBundle resourceBundle = ResourceBundle.getBundle("db");
+	public Collection entityManagerFactory() {
+		try {
+			Class.forName(resourceBundle.getString("driverName"));
+			String url = resourceBundle.getString("url");
+			String user = resourceBundle.getString("user");
+			String password = resourceBundle.getString("password");
+			return DriverManager.getConnection(url, user, password);
+		} catch (ClassNotFoundException | SQLException e) {
+			return null;
+		}
+	}
+}

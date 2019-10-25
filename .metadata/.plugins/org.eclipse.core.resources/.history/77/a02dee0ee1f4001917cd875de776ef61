@@ -1,0 +1,116 @@
+package com.laptrinhjavaweb.dto;
+
+import java.util.Date;
+
+import com.laptrinhjavaweb.annotation.Column;
+
+public class BuildingDTO {
+	private Long id;
+
+	private String name;
+
+	private Integer numberOfBasement;
+
+	private Integer buildingArea;
+
+	private String district;
+
+	private String ward;
+
+	private String street;
+
+	private String structure;
+
+	private Integer costrent;
+
+	private String costDescription;
+
+	private String serviceCost;
+
+	private String carCost;
+
+	private String motorbikeCost;
+
+	private String overtimeCost;
+
+	private String electricityCost;
+
+	private String deposit;
+
+	private String payment;
+
+	private String timerent;
+
+	private String timeDecorator;
+
+	private String managerName;
+
+	private String managerPhone;
+
+	private String type;
+
+	private Date createdDate;
+
+	private Date modifiedDate;
+
+	private String createdBy;
+
+	private String modifiedBy;
+	// java bean is getter/setter => all access modifier for variable is private
+	public String getDirection() {
+		return direction;
+	}
+
+	public void setDirection(String direction) {
+		this.direction = direction;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public String getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(String district) {
+		this.district = district;
+	}
+
+	public String getStructure() {
+		return structure;
+	}
+
+	public void setStructure(String structure) {
+		this.structure = structure;
+	}
+
+	public Integer getNumberOfBasement() {
+		return numberOfBasement;
+	}
+
+	public void setNumberOfBasement(Integer numberOfBasement) {
+		this.numberOfBasement = numberOfBasement;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+}

@@ -1,0 +1,15 @@
+package com.laptrinhjavaweb.responsitory.impl;
+
+import java.util.List;
+
+import com.laptrinhjavaweb.dto.BuildingDTO;
+import com.laptrinhjavaweb.responsitory.IBuildingRepository;
+
+public class BuildingRepository implements IBuildingRepository{
+
+	@Override
+	public List<BuildingDTO> findAll() {
+		return null;
+	}
+	
+}

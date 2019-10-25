@@ -1,0 +1,18 @@
+package com.laptrinhjavaweb.controller;
+import java.util.List;
+
+import com.laptrinhjavaweb.dto.BuildingDTO;
+import com.laptrinhjavaweb.service.BuildingService;
+
+public class BuildingController {
+	
+	private static BuildingService buildingService = new BuildingService();
+	public static void main(String[] argr) {
+		
+		List<BuildingDTO> buildings = buildingService.findAll();
+		for (BuildingDTO item: buildings) {
+			System.out.println("Name: " + item.getName() + " - " + "District" + item.getDistrict());
+		}
+	}
+	
+}

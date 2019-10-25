@@ -1,0 +1,24 @@
+package com.laptrinhjavaweb.service.impl;
+import java.util.List;
+
+import com.laptrinhjavaweb.dto.BuildingDTO;
+import com.laptrinhjavaweb.service.IBuildingService;
+
+public class BuildingService implements IBuildingService {
+
+	private IBuildingService buildingRepository;
+	
+		
+	public BuildingService(IBuildingService buildingRepository) {
+		super();
+		this.buildingRepository = buildingRepository;
+	}
+
+
+	@Override
+	public List<BuildingDTO> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

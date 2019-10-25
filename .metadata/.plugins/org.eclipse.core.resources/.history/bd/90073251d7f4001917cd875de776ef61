@@ -1,0 +1,17 @@
+package com.laptrinhjavaweb.mapper;
+
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ResultSetMapper<T> {
+	public List<T> mapRow(ResultSet rs, Class zClass){
+		List<T> results = new ArrayList<>();
+		try {
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return results;
+	}
+}

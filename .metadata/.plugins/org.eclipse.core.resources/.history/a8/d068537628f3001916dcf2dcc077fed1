@@ -1,0 +1,58 @@
+
+package com.laptrinhjavaweb.responsitory.impl;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.laptrinhjavaweb.dto.UserDTO;
+import com.laptrinhjavaweb.responsitory.IUserRepository;
+
+public class UserRepository implements IUserRepository {
+
+	@Override
+	public List<UserDTO> findAll(int status) {
+		
+		String sql = "select * from user where status = ?1 and usernam = ?2";
+		List<UserDTO> results = new ArrayList<UserDTO>();
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = EntityManagerFactory.getConnection();
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, status);
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				UserDTO userDTO = new UserDTO();
+				userDTO.setUserName(resultSet.getString("username"));
+				userDTO.setFullName(resultSet.getString("fullname"));
+				results.add(userDTO);
+			}
+			return results;
+
+		} catch (Exception e) {
+			return null;
+		} finally {
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+				if (statement != null) {
+					statement.close();
+				}
+				if (resultSet != null) {
+					resultSet.close();
+				}
+			} catch (SQLException e) {
+				return null;
+			}
+		}
+
+	}
+
+}

@@ -1,0 +1,16 @@
+package com.laptrinhjavaweb.responsitory.impl;
+
+import java.util.List;
+
+import com.laptrinhjavaweb.dto.UserDTO;
+import com.laptrinhjavaweb.responsitory.IUserRepository;
+
+public class UserRepository implements IUserRepository {
+
+	@Override
+	public List<UserDTO> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
