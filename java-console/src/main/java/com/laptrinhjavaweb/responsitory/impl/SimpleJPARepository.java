@@ -4,9 +4,9 @@ package com.laptrinhjavaweb.responsitory.impl;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 import com.laptrinhjavaweb.annotation.Entity;
@@ -26,23 +26,33 @@ public class SimpleJPARepository<T> implements JPARepository<T> {
 	}
 
 	@Override
-	public List<T> findAll() {
+	public List<T> findAll(int offset, int limit, Object...where) {
 		String tableName = "";
 		if (zClass.isAnnotationPresent(Entity.class) && zClass.isAnnotationPresent(Table.class))  {
 			Table tableClass = zClass.getAnnotation(Table.class);
 			tableName = tableClass.name();
 		}
 		
-		String sql = "select * from " + tableName + "";
+		
+		
+		StringBuilder sql = new StringBuilder("select * from " + tableName + " A where 1=1 ");
+		
+		if(where != null && where.length >0) {
+			sql.append(where[0]);
+		}
+		sql.append(" limit " + offset + ", " + limit + "");
 //		List<T> results = new ArrayList<>();
 		ResultSetMapper<T> resultSetMapper = new ResultSetMapper<>();
 		Connection connection = null;
-		PreparedStatement statement = null;
+//		PreparedStatement statement = null;
+		Statement statement = null;
 		ResultSet resultSet = null;
 		try {
 			connection = EntityManagerFactory.getConnection();
-			statement = connection.prepareStatement(sql);
-			resultSet = statement.executeQuery();
+//			statement = connection.prepareStatement(sql.toString());
+			statement = connection.createStatement();
+			resultSet = statement.executeQuery(sql.toString());
+//			resultSet = statement.executeQuery();
 			
 			/*
 			 * while (resultSet.next()) { results.add(rowMapper.mapRow(resultSet));

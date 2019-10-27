@@ -26,6 +26,9 @@ public class ResultSetMapper<T> {
 					for (int i = 0; i < resultSetMetaData.getColumnCount(); i++) {
 						String columnName = resultSetMetaData.getColumnName(i + 1);
 						Object columnValue = rs.getObject(i + 1);
+						ColumnModel columnModel = new ColumnModel();
+						columnModel.setColumnName(columnName);
+						columnModel.setColumnValue(columnValue);
 
 //						for (Field field : fields) {
 //							if (field.isAnnotationPresent(Column.class)) {
@@ -38,7 +41,7 @@ public class ResultSetMapper<T> {
 //							}
 //						}
 
-						convertResultSetToEntity(fields, columnName, columnValue, object);
+						convertResultSetToEntity(fields, columnModel , object);
 						Class<?> parentClass = zClass.getSuperclass();
 						while (parentClass != null) {
 							Field[] fieldsParents = parentClass.getDeclaredFields();
@@ -54,7 +57,7 @@ public class ResultSetMapper<T> {
 //									}
 //								}
 //							}
-							convertResultSetToEntity(fieldsParents, columnName, columnValue, object);
+							convertResultSetToEntity(fieldsParents, columnModel, object);
 							parentClass = parentClass.getSuperclass();
 						}
 					}
@@ -66,15 +69,16 @@ public class ResultSetMapper<T> {
 		}
 		return results;
 	}
-
-	private void convertResultSetToEntity(Field[] fields, String columnName, Object columnValue, T object) {
+	@SuppressWarnings("unchecked")
+	private void convertResultSetToEntity(Field[] fields, ColumnModel columnModel, Object ...objects) {
+		T object = (T) objects[0];
 		try {
 			for (Field field : fields) {
 				if (field.isAnnotationPresent(Column.class)) {
 					Column column = field.getAnnotation(Column.class);
-					if (column.name().equals(columnName) && columnValue != null) {
+					if (column.name().equals(columnModel.getColumnName()) && columnModel.getColumnValue() != null) {
 						// convert data
-						BeanUtils.setProperty(object, field.getName(), columnValue);
+						BeanUtils.setProperty(object, field.getName(), columnModel.getColumnValue());
 						break;
 					}
 				}
@@ -83,6 +87,24 @@ public class ResultSetMapper<T> {
 			System.out.println(e.getMessage());
 		}
 
+	}
+	
+	static class ColumnModel{
+		private String ColumnName;
+		private Object ColumnValue;
+		public String getColumnName() {
+			return ColumnName;
+		}
+		public Object getColumnValue() {
+			return ColumnValue;
+		}
+		public void setColumnName(String columnName) {
+			ColumnName = columnName;
+		}
+		public void setColumnValue(Object columnValue) {
+			ColumnValue = columnValue;
+		}
+		
 	}
 
 }

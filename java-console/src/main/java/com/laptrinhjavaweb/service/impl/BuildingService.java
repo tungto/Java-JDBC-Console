@@ -1,6 +1,8 @@
 package com.laptrinhjavaweb.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.laptrinhjavaweb.converter.BuildingConverter;
@@ -20,7 +22,7 @@ public class BuildingService implements IBuildingService {
 	}
 
 	@Override
-	public List<BuildingDTO> findAll() {
+	public List<BuildingDTO> findAll(String name, String district, int buildingArea, int numberOfBasement, int offset, int limit ) {
 		/*
 		 * List<BuildingDTO> results = new ArrayList<>(); List<BuildingEntity>
 		 * buildingEntities = buildingRepository.findAll(); for (BuildingEntity item :
@@ -35,7 +37,10 @@ public class BuildingService implements IBuildingService {
 		 */
 
 		// java 8
-		return buildingRepository.findAll().stream().map(item -> buildingConverter.convertToBTO(item))
+		Map<String, Object> maps = new HashMap<String,Object>();
+		
+		
+		return buildingRepository.findAll(maps, offset, limit).stream().map(item -> buildingConverter.convertToBTO(item))
 				.collect(Collectors.toList());
 	}
 
