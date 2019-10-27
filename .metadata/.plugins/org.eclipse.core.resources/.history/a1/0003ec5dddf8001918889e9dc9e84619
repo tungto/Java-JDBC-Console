@@ -1,0 +1,52 @@
+package com.laptrinhjavaweb.builder;
+
+public class BuildingSearchBuilder {
+	//required parameters
+		private String name;
+		private String district;
+	 
+		public String getName() {
+			return name;
+		}
+
+		public String getDistrict() {
+			return district;
+		}
+
+		private BuildingSearchBuilder(Builder builder) {
+		 
+		}
+		
+		//Builder Class
+		public static class Builder{
+
+			// required parameters
+			private String name;
+			private String district;
+
+			
+			public BuildingSearchBuilder(String hdd, String ram){
+				this.HDD=hdd;
+				this.RAM=ram;
+			}
+
+			 
+			
+			public void setName(String name) {
+				this.name = name;
+			}
+
+
+
+			public void setDistrict(String district) {
+				this.district = district;
+			}
+
+
+
+			public BuildingSearchBuilder build(){
+				return new BuildingSearchBuilder(this);
+			}
+
+		}
+}
