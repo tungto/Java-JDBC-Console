@@ -1,13 +1,7 @@
 
 package com.laptrinhjavaweb.responsitory.impl;
 
-import java.util.List;
-import java.util.Map;
-
-import org.apache.commons.lang.StringUtils;
-
 import com.laptrinhjavaweb.entity.BuildingEntity;
-import com.laptrinhjavaweb.paging.Pageable;
 import com.laptrinhjavaweb.responsitory.IBuildingRepository;
 
 public class BuildingRepository extends SimpleJPARepository<BuildingEntity> implements IBuildingRepository{

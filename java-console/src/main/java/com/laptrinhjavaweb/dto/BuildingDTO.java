@@ -1,9 +1,6 @@
 package com.laptrinhjavaweb.dto;
 
-import java.util.Date;
-
-public class BuildingDTO {
-	private Long id;
+public class BuildingDTO  extends AbstractDTO{
 
 	private String name;
 
@@ -47,18 +44,7 @@ public class BuildingDTO {
 
 	private String type;
 
-	private Date createdDate;
-
-	private Date modifiedDate;
-
-	private String createdBy;
-
-	private String modifiedBy;
 	// java bean is getter/setter => all access modifier for variable is private
-
-	public Long getId() {
-		return id;
-	}
 
 	public Integer getBuildingArea() {
 		return buildingArea;
@@ -124,26 +110,6 @@ public class BuildingDTO {
 		return type;
 	}
 
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-
-	public Date getModifiedDate() {
-		return modifiedDate;
-	}
-
-	public String getCreatedBy() {
-		return createdBy;
-	}
-
-	public String getModifiedBy() {
-		return modifiedBy;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	public void setBuildingArea(Integer buildingArea) {
 		this.buildingArea = buildingArea;
 	}
@@ -206,22 +172,6 @@ public class BuildingDTO {
 
 	public void setType(String type) {
 		this.type = type;
-	}
-
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
-
-	public void setModifiedDate(Date modifiedDate) {
-		this.modifiedDate = modifiedDate;
-	}
-
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
-
-	public void setModifiedBy(String modifiedBy) {
-		this.modifiedBy = modifiedBy;
 	}
 
 	public String getStreet() {
